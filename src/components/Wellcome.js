@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './Button';
 
 const Wellcome = ({ classSelector, user }) => {
   return (
@@ -7,7 +8,7 @@ const Wellcome = ({ classSelector, user }) => {
         <h1 className="wellcome__user-title">
           Здравствуйте, <span className="wellcome__user-current">{user}</span>
         </h1>
-        <button className="button wellcome__button">Сменить статус</button>
+        <Button classSelector="wellcome__button">Сменить статус</Button>
       </div>
       <div className="wellcome__status">
         <p className="wellcome__status-text">

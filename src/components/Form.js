@@ -3,6 +3,7 @@ import FormCheckBox from './FormCheckBox';
 import FormInput from './FormInput';
 import FormSelect from './FormSelect';
 import cityList from '../utils/cityList';
+import Button from './Button';
 
 const Form = () => {
   return (
@@ -47,8 +48,7 @@ const Form = () => {
           about="принимать актуальную информацию на емейл"
         />
       </fieldset>
-
-      <button className="form__button">Изменить</button>
+      <Button classSelector="form__button">Изменить</Button>
     </form>
   );
 };
