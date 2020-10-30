@@ -3,7 +3,7 @@ import React from 'react';
 const FormCheckBox = ({ title, name, label, classSelector, about }) => {
   return (
     <>
-      <label className="form__label" for={label}>
+      <label className="form__label" htmlFor={label}>
         {title}
       </label>
       <input
@@ -13,7 +13,7 @@ const FormCheckBox = ({ title, name, label, classSelector, about }) => {
         type="checkbox"
         required
       ></input>
-      <label className="form__label" for={label}>
+      <label className="form__label" htmlFor={label}>
         {about}
       </label>
     </>

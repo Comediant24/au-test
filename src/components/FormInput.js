@@ -3,7 +3,7 @@ import React from 'react';
 const FormInput = ({ title, name, label, classSelector, type }) => {
   return (
     <>
-      <label className="form__label" for={label}>
+      <label className="form__label" htmlFor={label}>
         {title}
       </label>
       <input
