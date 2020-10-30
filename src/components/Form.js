@@ -1,4 +1,6 @@
 import React from 'react';
+import FormCheckBox from './FormCheckBox';
+import FormInput from './FormInput';
 import FormSelect from './FormSelect';
 
 const Form = () => {
@@ -9,55 +11,40 @@ const Form = () => {
       </fieldset>
 
       <fieldset className="form__input-container form__input-container_ctrl_password">
-        <label className="form__label" for="password">
-          Пароль
-        </label>
-        <input
-          id="password"
+        <FormInput
+          title="Пароль"
           name="password"
-          className="form__item form__item_password"
+          label="password"
+          classSelector="password"
           type="password"
-          required
-        ></input>
-        <label className="form__label" for="password-repeat">
-          Пароль еще раз
-        </label>
-        <input
-          id="password-repeat"
-          name="passeordRepeat"
-          className="form__item form__item_password"
+        />
+        <FormInput
+          title="Пароль еще раз"
+          name="passwordRepeat"
+          label="password-repeat"
+          classSelector="password"
           type="password"
-          required
-        ></input>
+        />
       </fieldset>
 
       <fieldset className="form__input-container form__input-container_ctrl_email">
-        <label className="form__label" for="user-email">
-          Электронная почта
-        </label>
-        <input
-          id="user-email"
+        <FormInput
+          title="Электронная почта"
           name="userEmail"
-          className="form__item form__item_email"
+          label="user-email"
+          classSelector="email"
           type="email"
-          required
-        ></input>
+        />
       </fieldset>
 
       <fieldset className="form__input-container form__input-container_ctrl_agreement">
-        <label className="form__label" for="user-agreement">
-          Я согласен
-        </label>
-        <input
-          id="user-agreement"
+        <FormCheckBox
+          title="Я согласен"
           name="userAgreement"
-          className="form__item form__item_agreement"
-          type="checkbox"
-          required
-        ></input>
-        <label className="form__label" for="user-agreement">
-          принимать актуальную информацию на емейл
-        </label>
+          label="user-agreement"
+          classSelector="agreement"
+          about="принимать актуальную информацию на емейл"
+        />
       </fieldset>
 
       <button className="form__button">Изменить</button>
