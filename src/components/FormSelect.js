@@ -3,7 +3,7 @@ import React from 'react';
 const FormSelect = ({ title, selectList }) => {
   return (
     <>
-      <label className="form__label" for="user-city">
+      <label className="form__label" htmlFor="user-city">
         {title || 'Заголовок'}
       </label>
       <select
@@ -13,7 +13,9 @@ const FormSelect = ({ title, selectList }) => {
         required
       >
         {selectList ? (
-          selectList.map((item) => <option>{item.city}</option>)
+          selectList.map((item, index) => (
+            <option key={index}>{item.city}</option>
+          ))
         ) : (
           <option>{'значения'}</option>
         )}
