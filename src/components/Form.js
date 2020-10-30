@@ -2,12 +2,13 @@ import React from 'react';
 import FormCheckBox from './FormCheckBox';
 import FormInput from './FormInput';
 import FormSelect from './FormSelect';
+import cityList from '../utils/cityList';
 
 const Form = () => {
   return (
     <form className="form form__container">
       <fieldset className="form__input-container form__input-container_ctrl_city">
-        <FormSelect title="Ваш город" />
+        <FormSelect title="Ваш город" selectList={cityList} />
       </fieldset>
 
       <fieldset className="form__input-container form__input-container_ctrl_password">
