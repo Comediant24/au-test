@@ -1,4 +1,5 @@
 import React from 'react';
+import FormCheckBox from './FormCheckBox';
 import FormInput from './FormInput';
 import FormSelect from './FormSelect';
 
@@ -37,19 +38,13 @@ const Form = () => {
       </fieldset>
 
       <fieldset className="form__input-container form__input-container_ctrl_agreement">
-        <label className="form__label" for="user-agreement">
-          Я согласен
-        </label>
-        <input
-          id="user-agreement"
+        <FormCheckBox
+          title="Я согласен"
           name="userAgreement"
-          className="form__item form__item_agreement"
-          type="checkbox"
-          required
-        ></input>
-        <label className="form__label" for="user-agreement">
-          принимать актуальную информацию на емейл
-        </label>
+          label="user-agreement"
+          classSelector="agreement"
+          about="принимать актуальную информацию на емейл"
+        />
       </fieldset>
 
       <button className="form__button">Изменить</button>
