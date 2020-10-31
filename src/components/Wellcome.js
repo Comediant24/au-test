@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import './Wellcome.scss';
 
 const Wellcome = ({ classSelector, user }) => {
   return (

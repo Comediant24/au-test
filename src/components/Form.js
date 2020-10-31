@@ -4,6 +4,7 @@ import FormInput from './FormInput';
 import FormSelect from './FormSelect';
 import cityList from '../utils/cityList';
 import Button from './Button';
+import './Form.scss';
 
 const Form = () => {
   return (
