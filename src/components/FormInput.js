@@ -1,10 +1,18 @@
 import React from 'react';
 
-const FormInput = ({ title, name, label, classSelector, type }) => {
+const FormInput = ({
+  formSelector,
+  title,
+  name,
+  label,
+  classSelector,
+  type,
+  prompt,
+}) => {
   return (
-    <>
+    <div className={`form__input-container ${formSelector}`}>
       <label className="form__label" htmlFor={label}>
-        {title}
+        {title || 'Заголовок'}
       </label>
       <input
         id={label}
@@ -13,7 +21,8 @@ const FormInput = ({ title, name, label, classSelector, type }) => {
         type={type}
         required
       ></input>
-    </>
+      <p className="form__item-prompt">{prompt || ''}</p>
+    </div>
   );
 };
 

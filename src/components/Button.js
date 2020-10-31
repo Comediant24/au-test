@@ -1,11 +1,11 @@
 import React from 'react';
-
-const Button = (props, { classSelector }) => {
+import './Button.scss';
+const Button = (props) => {
   return (
     <button
       type="button"
       aria-label={props.children}
-      className={`button ${classSelector}`}
+      className={`button ${props.classSelector}`}
     >
       {props.children}
     </button>
