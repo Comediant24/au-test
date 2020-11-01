@@ -1,0 +1,10 @@
+$base-size: 21px;
+$font: -apple-system, BlinkMacSystemFont, 'Arial', sans-serif;
+
+%grid-shared {
+  display: grid;
+  grid-template-columns: 1fr repeat(2, 1.7fr);
+  grid-row-gap: 10px;
+  grid-column-gap: 20px;
+  align-items: baseline;
+}

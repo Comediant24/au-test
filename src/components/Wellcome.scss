@@ -1,6 +1,66 @@
-.wellcome__button {
-  font-size: 12px;
-  line-height: 14px;
-  color: #0c77bb;
-  border-bottom: 1px dashed #0c77bb;
+@import '../vendor/constants.scss';
+
+.wellcome {
+  @extend %grid-shared;
+
+  &__title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  &__user-title {
+    grid-column: 1/3;
+    font-size: calc(1.5 * #{$base-size});
+    line-height: 126%;
+    color: #666666;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__button {
+    font-size: calc(0.57 * #{$base-size});
+    line-height: 180%;
+    color: #0c77bb;
+    border-bottom: 1px dashed #0c77bb;
+    justify-self: baseline;
+    margin-left: 15px;
+  }
+
+  // &__title-margin {
+  //   margin-right: 149px;
+  // }
+
+  &__user-current {
+    color: #000000;
+  }
+
+  &__status {
+    grid-column: 2/4;
+    max-width: 503px;
+    height: 46px;
+    background: #eaeaea;
+    position: relative;
+  }
+
+  &__status-text {
+    font-size: calc(0.66 * #{$base-size});
+    line-height: 157%;
+    color: #404040;
+    margin-left: 12px;
+  }
+
+  &__status-input_display_hidden {
+    display: none;
+  }
+
+  &__square-status {
+    width: 11px;
+    height: 11px;
+    left: 8px;
+    top: -5px;
+    background: #eaeaea;
+    transform: rotate(45deg);
+    position: absolute;
+  }
 }
