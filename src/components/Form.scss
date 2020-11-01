@@ -1,12 +1,125 @@
-.form__button {
-  font-size: 18px;
-  line-height: 20px;
-  color: #ffffff;
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
-  width: 119px;
-  height: 40px;
-  left: 324px;
-  top: 619px;
-  background: #71c838;
-  box-shadow: 0px 1px 0px #539d22;
+@import '../vendor/constants.scss';
+
+.form {
+  width: 100%;
+  display: grid;
+
+  &__fieldset {
+    padding: 32px 0;
+    margin: 0;
+    border: none;
+    border-bottom: 1px solid #e5e4e4;
+    display: grid;
+    gap: 40px;
+
+    &_ctrl_email {
+      border: none;
+    }
+    &_ctrl_email {
+      padding-bottom: 40px;
+    }
+  }
+
+  &__input-container {
+    @extend %grid-shared;
+  }
+
+  &__select-wrapper {
+    position: relative;
+  }
+
+  &__select-wrapper::before {
+    content: url(../images/arrow.svg);
+    position: absolute;
+    right: 10px;
+    top: 2px;
+    z-index: -1;
+  }
+
+  &__item {
+    border: 1px solid #999999;
+    box-sizing: border-box;
+    background: none;
+    font-size: calc(0.76 * #{$base-size});
+    line-height: 119%;
+    padding: 6px 12px;
+
+    &_city {
+      width: 100%;
+      appearance: none;
+    }
+
+    &-prompt {
+      padding: 0;
+      margin: 0;
+      font-size: 12px;
+      line-height: 167%;
+      color: #999999;
+    }
+
+    &-wrapper {
+      grid-column: 2/4;
+    }
+
+    &_agreement {
+      &:checked,
+      &:not(:checked) {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+      }
+
+      &:checked + .form__checkbox-about,
+      &:not(:checked) + .form__checkbox-about {
+        position: relative;
+        padding-left: 28px;
+        cursor: pointer;
+      }
+
+      &:checked + .form__checkbox-about::before,
+      &:not(:checked) + .form__checkbox-about::before {
+        content: '';
+        position: absolute;
+        left: 0px;
+        top: 1px;
+        width: 12px;
+        height: 12px;
+        border: 1px solid #999999;
+      }
+
+      &:checked + .form__checkbox-about::after,
+      &:not(:checked) + .form__checkbox-about::after {
+        content: url(../images/yes.svg);
+        position: absolute;
+        left: 1px;
+        top: 0px;
+      }
+      &:not(:checked) + .form__checkbox-about::after {
+        opacity: 0;
+      }
+      &:checked + .form__checkbox-about::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__checkbox-about {
+    font-size: calc(0.76 * #{$base-size});
+    line-height: 119%;
+  }
+
+  &__button {
+    font-size: 18px;
+    line-height: 20px;
+    color: #ffffff;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+    width: 119px;
+    height: 40px;
+    left: 324px;
+    top: 619px;
+    background: #71c838;
+    box-shadow: 0px 1px 0px #539d22;
+  }
 }
