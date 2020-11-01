@@ -1,6 +1,8 @@
 import React from 'react';
 
 const FormSelect = ({
+  value,
+  onChange,
   formSelector,
   title,
   name,
@@ -9,6 +11,9 @@ const FormSelect = ({
   selectList,
   prompt,
 }) => {
+  const handleChange = (e) => {
+    onChange(e);
+  };
   return (
     <div className={`form__input-container ${formSelector}`}>
       <label className="form__label" htmlFor={label}>
@@ -16,6 +21,8 @@ const FormSelect = ({
       </label>
       <div className="form__select-wrapper">
         <select
+          value={value}
+          onChange={handleChange}
           name={name}
           id={label}
           className={`form__item ${classSelector}`}
@@ -23,7 +30,9 @@ const FormSelect = ({
         >
           {selectList ? (
             selectList.map((item, index) => (
-              <option key={index}>{item.city}</option>
+              <option key={index} value={item.city}>
+                {item.city}
+              </option>
             ))
           ) : (
             <option>{'значения'}</option>
