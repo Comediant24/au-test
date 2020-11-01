@@ -1,9 +1,13 @@
 import React from 'react';
 import './Button.scss';
 const Button = (props) => {
+  const handleClick = (e) => {
+    props.onClick(e);
+  };
   return (
     <button
-      type="button"
+      onClick={handleClick}
+      type={props.type}
       aria-label={props.children}
       className={`button ${props.classSelector}`}
     >
