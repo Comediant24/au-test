@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import FormCheckBox from './FormCheckBox';
 import FormInput from './FormInput';
 import FormSelect from './FormSelect';
@@ -8,26 +8,36 @@ import './Form.scss';
 
 const Form = () => {
   const [city, setCity] = useState(cityList[0].city);
-  const [pass, setPass] = useState('');
-  const [repeatPass, setRepeatPass] = useState('');
-  const [email, setEmail] = useState('');
   const [check, setCheck] = useState(false);
 
+  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
+  const [isValid, setIsvalid] = useState(false);
+
+  const form = useRef();
+
+  useEffect(() => {
+    const match = values.password === values.passwordRepeat;
+    setIsvalid(form.current.checkValidity() && match);
+  }, [values]);
+
   const handleChangeInput = (e) => {
-    const value = e.target.value;
-    switch (e.target.name) {
-      case 'password':
-        setPass(value);
-        break;
-      case 'passwordRepeat':
-        setRepeatPass(value);
-        break;
-      case 'userEmail':
-        setEmail(value);
-        break;
-      default:
-        break;
-    }
+    const target = e.target;
+    const { name, value } = target;
+    setValues({ ...values, [name]: value });
+    setErrors({
+      ...errors,
+      [name]: textError(value, name, target),
+    });
+  };
+
+  const textError = (value, name, target) => {
+    if (name === 'password' && !target.validity.valid)
+      return 'Используйте не менее 5 символов';
+    if (name === 'userEmail' && !target.validity.valid)
+      return 'Неверный E-mail';
+    if (name === 'passwordRepeat' && value !== values.password)
+      return 'Пароли не совпадают';
   };
 
   const handleChangeSelect = (e) => {
@@ -46,24 +56,19 @@ const Form = () => {
 
   const handleResetValue = () => {
     setCity(cityList[0].city);
-    setPass('');
-    setRepeatPass('');
-    setEmail('');
     setCheck(false);
+    setValues({});
   };
 
   const toJSON = () => {
+    const { userEmail, password } = values;
     console.log(
-      JSON.stringify(
-        { city: city, password: pass, email: email, mailing: check },
-        null,
-        '\t'
-      )
+      JSON.stringify({ city, password, userEmail, check }, null, '\t')
     );
   };
 
   return (
-    <form className="form form__container">
+    <form ref={form} className="form form__container">
       <fieldset className="form__fieldset form__fieldset_ctrl_city">
         <FormSelect
           value={city}
@@ -74,12 +79,13 @@ const Form = () => {
           label="user-city"
           classSelector="form__item_city"
           selectList={cityList}
+          required
         />
       </fieldset>
 
       <fieldset className="form__fieldset form__fieldset_ctrl_password">
         <FormInput
-          value={pass}
+          value={values.password}
           onChange={handleChangeInput}
           formSelector="form__input-container_ctrl_password"
           title="Пароль"
@@ -88,9 +94,14 @@ const Form = () => {
           classSelector="password"
           type="password"
           prompt="Ваш новый пароль должен содержать не менее 5 символов."
+          minLength="5"
+          maxLength="40"
+          autoComplete="off"
+          validationMessage={errors.password}
+          required
         />
         <FormInput
-          value={repeatPass}
+          value={values.passwordRepeat}
           onChange={handleChangeInput}
           formSelector="form__input-container_ctrl_password"
           title="Пароль еще раз"
@@ -99,12 +110,17 @@ const Form = () => {
           classSelector="password"
           type="password"
           prompt="Повторите пароль, пожалуйста, это обезопасит вас с нами на случай ошибки."
+          minLength="5"
+          maxLength="40"
+          validationMessage={errors.passwordRepeat}
+          autoComplete="off"
+          required
         />
       </fieldset>
 
       <fieldset className="form__fieldset form__fieldset_ctrl_email">
         <FormInput
-          value={email}
+          value={values.userEmail}
           onChange={handleChangeInput}
           formSelector="form__input-container_ctrl_email"
           title="Электронная почта"
@@ -112,7 +128,10 @@ const Form = () => {
           label="user-email"
           classSelector="email"
           type="email"
+          validationMessage={errors.userEmail}
           prompt="Можно изменить адрес, указанный при регистрации."
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          required
         />
 
         <FormCheckBox
@@ -130,6 +149,8 @@ const Form = () => {
         onClick={handleClick}
         type={'submit'}
         classSelector="form__button"
+        ariaLabel="Изменить данные"
+        isEnabled={isValid}
       >
         Изменить
       </Button>

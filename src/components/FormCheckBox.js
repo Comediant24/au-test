@@ -1,6 +1,7 @@
 import React from 'react';
 
 const FormCheckBox = ({
+  value,
   onChange,
   formSelector,
   title,
@@ -15,12 +16,14 @@ const FormCheckBox = ({
         {title || ''}
       </label>
       <div className="form__item-wrapper">
-        <input
+        <div
           id={label}
+          onClick={onChange}
           name={name}
-          className={`form__item form__item_${classSelector}`}
-          type="checkbox"
-        ></input>
+          className={`form__item form__item_${classSelector} ${
+            value ? `form__item_${classSelector}_check` : ''
+          }`}
+        ></div>
         <label
           onClick={onChange}
           className="form__label form__checkbox-about"

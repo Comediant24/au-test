@@ -22,6 +22,7 @@
 
   &__input-container {
     @extend %grid-shared;
+    position: relative;
   }
 
   &__select-wrapper {
@@ -36,6 +37,17 @@
     z-index: -1;
   }
 
+  &__input-error {
+    grid-column: 2/3;
+    font-size: calc(0.67 * #{$base-size});
+    line-height: 110%;
+    height: 40px;
+    color: #ff0000;
+    position: absolute;
+    top: 35px;
+    left: 0px;
+  }
+
   &__item {
     border: 1px solid #999999;
     box-sizing: border-box;
@@ -47,60 +59,36 @@
     &_city {
       width: 100%;
       appearance: none;
+      cursor: pointer;
     }
 
     &-prompt {
       padding: 0;
       margin: 0;
-      font-size: 12px;
+      font-size: calc(0.67 * #{$base-size});
       line-height: 167%;
       color: #999999;
     }
 
     &-wrapper {
       grid-column: 2/4;
+      display: flex;
+      align-items: center;
     }
 
     &_agreement {
-      &:checked,
-      &:not(:checked) {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-        clip: rect(0 0 0 0);
-      }
+      width: 12px;
+      height: 12px;
+      border: 1px solid #999999;
+      margin-right: 10px;
+      padding: 0;
+      box-sizing: content-box;
+      cursor: pointer;
 
-      &:checked + .form__checkbox-about,
-      &:not(:checked) + .form__checkbox-about {
-        position: relative;
-        padding-left: 28px;
-        cursor: pointer;
-      }
-
-      &:checked + .form__checkbox-about::before,
-      &:not(:checked) + .form__checkbox-about::before {
-        content: '';
-        position: absolute;
-        left: 0px;
-        top: 1px;
-        width: 12px;
-        height: 12px;
-        border: 1px solid #999999;
-      }
-
-      &:checked + .form__checkbox-about::after,
-      &:not(:checked) + .form__checkbox-about::after {
-        content: url(../images/yes.svg);
-        position: absolute;
-        left: 1px;
-        top: 0px;
-      }
-      &:not(:checked) + .form__checkbox-about::after {
-        opacity: 0;
-      }
-      &:checked + .form__checkbox-about::after {
-        opacity: 1;
+      &_check {
+        background-image: url(../images/yes.svg);
+        background-repeat: no-repeat;
+        background-position: center;
       }
     }
   }
@@ -121,5 +109,10 @@
     top: 619px;
     background: #71c838;
     box-shadow: 0px 1px 0px #539d22;
+
+    &_disabled {
+      background: #c0c5bd;
+      box-shadow: 0px 1px 0px #6d6d6d;
+    }
   }
 }

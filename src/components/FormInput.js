@@ -1,34 +1,34 @@
 import React from 'react';
 
 const FormInput = ({
-  value,
   onChange,
+  value,
   formSelector,
   title,
-  name,
   label,
   classSelector,
-  type,
   prompt,
+  validationMessage,
+  name,
+  ...rest
 }) => {
-  const handleChange = (e) => {
-    onChange(e);
-  };
   return (
     <div className={`form__input-container ${formSelector}`}>
       <label className="form__label" htmlFor={label}>
-        {title || 'Заголовок'}
+        {title || 'Заголовок '}
       </label>
       <input
-        value={value}
-        onChange={handleChange}
+        value={value || ''}
+        onChange={onChange}
         id={label}
         name={name}
         className={`form__item form__item_${classSelector}`}
-        type={type}
-        required
+        {...rest}
       ></input>
       <p className="form__item-prompt">{prompt || ''}</p>
+      <span className="form__input-error form__input-error_visible">
+        {validationMessage}
+      </span>
     </div>
   );
 };
