@@ -5,11 +5,11 @@ const FormSelect = ({
   onChange,
   formSelector,
   title,
-  name,
   label,
   classSelector,
   selectList,
   prompt,
+  ...rest
 }) => {
   const handleChange = (e) => {
     onChange(e);
@@ -23,10 +23,9 @@ const FormSelect = ({
         <select
           value={value}
           onChange={handleChange}
-          name={name}
           id={label}
           className={`form__item ${classSelector}`}
-          required
+          {...rest}
         >
           {selectList ? (
             selectList.map((item, index) => (

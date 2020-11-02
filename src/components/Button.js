@@ -9,7 +9,11 @@ const Button = (props) => {
       onClick={handleClick}
       type={props.type}
       aria-label={props.children}
-      className={`button ${props.classSelector}`}
+      className={`button ${props.classSelector} ${
+        props.isEnabled ? '' : props.classSelector + '_disabled'
+      }`}
+      arial-label={props.ariaLabel}
+      disabled={!props.isEnabled}
     >
       {props.children}
     </button>
