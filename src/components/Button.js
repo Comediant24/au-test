@@ -1,21 +1,28 @@
 import React from 'react';
 import './Button.scss';
-const Button = (props) => {
+const Button = ({
+  onClick,
+  type,
+  children,
+  classSelector,
+  ariaLabel,
+  isEnabled = true,
+}) => {
   const handleClick = (e) => {
-    props.onClick(e);
+    onClick(e);
   };
   return (
     <button
       onClick={handleClick}
-      type={props.type}
-      aria-label={props.children}
-      className={`button ${props.classSelector} ${
-        props.isEnabled ? '' : props.classSelector + '_disabled'
+      type={type}
+      aria-label={children}
+      className={`button ${classSelector} ${
+        isEnabled ? '' : classSelector + '_disabled'
       }`}
-      arial-label={props.ariaLabel}
-      disabled={!props.isEnabled}
+      arial-label={ariaLabel}
+      disabled={!isEnabled}
     >
-      {props.children}
+      {children}
     </button>
   );
 };

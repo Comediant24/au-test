@@ -27,10 +27,6 @@
     margin-left: 15px;
   }
 
-  // &__title-margin {
-  //   margin-right: 149px;
-  // }
-
   &__user-current {
     color: #000000;
   }
@@ -41,17 +37,29 @@
     height: 46px;
     background: #eaeaea;
     position: relative;
-  }
+    display: flex;
+    align-items: center;
 
-  &__status-text {
-    font-size: calc(0.66 * #{$base-size});
-    line-height: 157%;
-    color: #404040;
-    margin-left: 12px;
-  }
+    &-text {
+      font-size: calc(0.66 * #{$base-size});
+      line-height: 157%;
+      color: #404040;
+      margin: 0;
+      padding: 0 12px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    &-input {
+      margin: 0 12px;
+      padding: 0;
+      width: 100%;
+      border: 1px solid #999999;
 
-  &__status-input_display_hidden {
-    display: none;
+      &_display_hidden {
+        display: none;
+      }
+    }
   }
 
   &__square-status {
