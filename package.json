@@ -1,7 +1,8 @@
 {
   "name": "au-test",
   "version": "0.1.0",
-  "homepage": "https://comediant24.github.io/au-stest/",
+  "private": true,
+  "homepage": "https://comediant24.github.io/au-test/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
