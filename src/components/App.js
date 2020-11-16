@@ -8,7 +8,7 @@ function App() {
       <header className="header">
         <Wellcome
           classSelector="header__wrapper"
-          user={`Человек №${Math.floor(Math.random() * 1000)}`}
+          user={`Человек${'\u00A0'}№${Math.floor(Math.random() * 1000)}`}
         />
       </header>
       <main className="main">

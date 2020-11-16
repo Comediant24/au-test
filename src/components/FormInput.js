@@ -14,7 +14,10 @@ const FormInput = ({
 }) => {
   return (
     <div className={`form__input-container ${formSelector}`}>
-      <label className="form__label" htmlFor={label}>
+      <label
+        className={`form__label form__label_${classSelector}`}
+        htmlFor={label}
+      >
         {title || 'Заголовок '}
       </label>
       <input

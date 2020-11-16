@@ -3,6 +3,14 @@
 .wellcome {
   @extend %grid-shared;
 
+  @media screen and (max-width: #{$large}) {
+    grid-template-columns: repeat(2, 1.5fr) 1fr;
+  }
+
+  @media screen and (max-width: #{$medium}) {
+    grid-template-columns: 1fr 2fr;
+  }
+
   &__title {
     display: flex;
     align-items: baseline;
@@ -16,6 +24,15 @@
     color: #666666;
     margin: 0;
     padding: 0;
+
+    @media screen and (max-width: #{$large}) {
+      font-size: calc(1.3 * #{$base-size});
+    }
+
+    @media screen and (max-width: #{$medium}) {
+      font-size: calc(1.1 * #{$base-size});
+      grid-column: 1/4;
+    }
   }
 
   &__button {

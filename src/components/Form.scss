@@ -27,6 +27,12 @@
 
   &__select-wrapper {
     position: relative;
+    @media screen and (max-width: #{$large}) {
+      grid-column: 1/3;
+    }
+    @media screen and (max-width: #{$medium}) {
+      grid-column: 1/4;
+    }
   }
 
   &__select-wrapper::before {
@@ -46,6 +52,35 @@
     position: absolute;
     top: 35px;
     left: 0px;
+
+    @media screen and (max-width: #{$large}) {
+      grid-row: 2/3;
+      grid-column: 1/3;
+    }
+
+    @media screen and (max-width: #{$medium}) {
+      grid-column: 1/4;
+    }
+  }
+
+  &__label {
+    @media screen and (max-width: #{$large}) {
+      grid-column: 1/3;
+    }
+    @media screen and (max-width: #{$medium}) {
+      grid-column: 1/4;
+    }
+
+    &_checkbox {
+      grid-column: 1/2;
+    }
+
+    &_agreement {
+      grid-column: 1/2;
+      @media screen and (max-width: #{$medium}) {
+        grid-column: 1/4;
+      }
+    }
   }
 
   &__item {
@@ -55,6 +90,15 @@
     font-size: calc(0.76 * #{$base-size});
     line-height: 119%;
     padding: 6px 12px;
+
+    @media screen and (max-width: #{$large}) {
+      grid-row: 2/3;
+      grid-column: 1/3;
+    }
+
+    @media screen and (max-width: #{$medium}) {
+      grid-column: 1/4;
+    }
 
     &_city {
       width: 100%;
@@ -68,12 +112,27 @@
       font-size: calc(0.67 * #{$base-size});
       line-height: 167%;
       color: #999999;
+
+      @media screen and (max-width: #{$large}) {
+        grid-row: 1/3;
+        margin-top: 6px;
+      }
+
+      @media screen and (max-width: #{$medium}) {
+        grid-row: 3/4;
+        grid-column: 1/4;
+      }
     }
 
     &-wrapper {
       grid-column: 2/4;
       display: flex;
       align-items: center;
+
+      @media screen and (max-width:#{$medium}) {
+        grid-column: 1/4;
+        grid-row: 2/3;
+      }
     }
 
     &_agreement {
@@ -98,6 +157,12 @@
     line-height: 119%;
   }
 
+  &__submit {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
   &__button {
     font-size: 18px;
     line-height: 20px;
@@ -114,5 +179,13 @@
       background: #c0c5bd;
       box-shadow: 0px 1px 0px #6d6d6d;
     }
+  }
+
+  &__save-date {
+    padding: 0;
+    margin: 0;
+    font-size: calc(0.57 * #{$base-size});
+    line-height: 167%;
+    color: #999999;
   }
 }

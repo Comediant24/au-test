@@ -12,7 +12,11 @@ const FormCheckBox = ({
 }) => {
   return (
     <div className={`form__input-container ${formSelector}`}>
-      <label onClick={onChange} className="form__label" htmlFor={label}>
+      <label
+        onClick={onChange}
+        className={`form__label form__label_${classSelector}`}
+        htmlFor={label}
+      >
         {title || ''}
       </label>
       <div className="form__item-wrapper">

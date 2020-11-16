@@ -5,6 +5,7 @@ import FormSelect from './FormSelect';
 import cityList from '../utils/cityList';
 import Button from './Button';
 import './Form.scss';
+import UpdateDate from './UpdateDate';
 
 const Form = () => {
   const [city, setCity] = useState(cityList[0].city);
@@ -13,6 +14,8 @@ const Form = () => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isValid, setIsvalid] = useState(false);
+
+  const [currentDate, setCurrentDate] = useState('21 октября 2015 в 04:29:00');
 
   const form = useRef();
 
@@ -50,7 +53,22 @@ const Form = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
+    let data =
+      new Date()
+        .toLocaleString('ru', {
+          day: 'numeric',
+          year: 'numeric',
+          month: 'long',
+        })
+        .slice(0, -3) +
+      ' в ' +
+      new Date().toLocaleString('ru', {
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+      });
     toJSON();
+    setCurrentDate(data);
     handleResetValue();
   };
 
@@ -145,15 +163,18 @@ const Form = () => {
           about="принимать актуальную информацию на емейл"
         />
       </fieldset>
-      <Button
-        onClick={handleClick}
-        type={'submit'}
-        classSelector="form__button"
-        ariaLabel="Изменить данные"
-        isEnabled={isValid}
-      >
-        Изменить
-      </Button>
+      <div className="form__submit">
+        <Button
+          onClick={handleClick}
+          type={'submit'}
+          classSelector="form__button"
+          ariaLabel="Изменить данные"
+          isEnabled={isValid}
+        >
+          Изменить
+        </Button>
+        <UpdateDate date={currentDate} />
+      </div>
     </form>
   );
 };

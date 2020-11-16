@@ -2,11 +2,22 @@
 
 .app {
   max-width: 990px;
+  min-width: 400px;
   min-height: 569px;
-  margin: 90px auto 0;
+  margin: 0 auto;
   font-size: $base-size;
   font-family: $font;
   display: flex;
   flex-direction: column;
   gap: 32px;
+  padding: 90px 25px 0;
+
+  @media screen and (max-width: #{$large}) {
+    padding: 50px 25px 10px;
+    gap: 10px;
+    box-sizing: border-box;
+  }
+  @media screen and (max-width: #{$medium}) {
+    padding: 30px 10px 10px;
+  }
 }
