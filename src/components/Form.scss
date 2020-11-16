@@ -124,6 +124,10 @@
       }
     }
 
+    &_error {
+      border-color: #ff0000;
+    }
+
     &-wrapper {
       grid-column: 2/4;
       display: flex;

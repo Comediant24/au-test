@@ -25,7 +25,9 @@ const FormInput = ({
         onChange={onChange}
         id={label}
         name={name}
-        className={`form__item form__item_${classSelector}`}
+        className={`form__item form__item_${classSelector} form__item_${
+          validationMessage ? 'error' : ''
+        }`}
         {...rest}
       ></input>
       <p className="form__item-prompt">{prompt || ''}</p>
